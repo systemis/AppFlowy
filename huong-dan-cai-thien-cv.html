@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hướng dẫn cải thiện CV — Stephen Pham</title>
+  <style>
+    :root {
+      --ink: #1a1a1f;
+      --muted: #555;
+      --accent: #0d4f8b;
+      --warn: #9a4d00;
+      --ok: #0a6b4a;
+      --bg: #f4f5f7;
+      --card: #fff;
+      --rule: #dde1e8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--bg);
+      margin: 0;
+      padding: 20px 16px 48px;
+      font-size: 15px;
+    }
+    .wrap { max-width: 780px; margin: 0 auto; }
+    .top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    a.btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    a.btn.secondary { background: #fff; color: var(--accent); border: 1px solid var(--accent); }
+    h1 { font-size: 1.5rem; color: var(--accent); margin: 0 0 8px; }
+    .lead { color: var(--muted); margin-bottom: 24px; }
+    .card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    h2 { font-size: 1.05rem; margin: 0 0 10px; color: var(--accent); }
+    h3 { font-size: 0.95rem; margin: 14px 0 6px; }
+    .priority {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .p-high { background: #fde8e8; color: #a41; }
+    .p-med { background: #fff4e0; color: var(--warn); }
+    .p-low { background: #e8f5ef; color: var(--ok); }
+    ul { margin: 8px 0; padding-left: 1.25rem; }
+    li { margin-bottom: 6px; }
+    .box {
+      background: #f8f9fb;
+      border-left: 3px solid var(--accent);
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    .box.warn { border-color: #c80; background: #fffbf0; }
+    .box.ok { border-color: var(--ok); }
+    code, .mono { font-family: ui-monospace, monospace; font-size: 13px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    th, td {
+      border: 1px solid var(--rule);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef2f7; }
+    .fill {
+      color: #888;
+      font-style: italic;
+    }
+    @media print {
+      .top { display: none; }
+      body { background: #fff; }
+      .card { box-shadow: none; border: 1px solid var(--rule); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Checklist cải thiện CV</h1>
+        <p class="lead">Chi tiết từng phần cần bổ sung — đặc biệt frontend — trước khi apply hàng loạt. CV đã cập nhật nằm ở <a href="index.html">index.html</a>.</p>
+      </div>
+      <div>
+        <a class="btn secondary" href="index.html">← Xem CV mới</a>
+        <a class="btn" href="index.html" onclick="setTimeout(function(){window.print()},300);return false;">Save CV PDF</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="priority p-high">Ưu tiên cao</span>
+      <h2>1. Số liệu &amp; bằng chứng (mọi role, kể cả FE)</h2>
+      <p>Recruiter FE vẫn hỏi impact giống backend. Mỗi bullet nên có ít nhất một trong các loại số sau (chỉ ghi <strong>số thật</strong> bạn đo được):</p>
+      <table>
+        <thead>
+          <tr><th>Vai trò / sản phẩm</th><th>Gợi ý metric FE</th><th>Bạn cần điền</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Seitrace</strong></td>
+            <td>LCP/TTI, p95 search latency, số request/ngày trên explorer UI, % mobile users</td>
+            <td class="fill">VD: p95 search &lt; ___ ms; ___ MAU</td>
+          </tr>
+          <tr>
+            <td><strong>HeavenDash / brrr</strong></td>
+            <td>Số chart/table realtime, tần suất WebSocket update, số user concurrent trên dashboard</td>
+            <td class="fill">VD: ___ dashboards; updates every ___ s</td>
+          </tr>
+          <tr>
+            <td><strong>@ancient8/connect</strong></td>
+            <td>npm weekly downloads, số app/game tích hợp, bundle size (KB gzipped)</td>
+            <td class="fill">VD: ___ downloads/week; ___ integrators</td>
+          </tr>
+          <tr>
+            <td><strong>Dojo mint UI</strong></td>
+            <td>Peak concurrent minters, error rate wallet flow, time-to-complete mint</td>
+            <td class="fill">VD: ___ mints/sale; ___ peak concurrent</td>
+          </tr>
+          <tr>
+            <td><strong>Kinobi builders</strong></td>
+            <td>DAU builders, preview latency p95, template count</td>
+            <td class="fill">VD: ___ users; preview &lt; ___ ms p95</td>
+          </tr>
+          <tr>
+            <td><strong>Docksoft</strong></td>
+            <td>Tên app, store rating, downloads, conversion subscribe</td>
+            <td class="fill">App: ___ ; ___ installs</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="box ok">
+        <strong>Công thức bullet:</strong> [Hành động] + [Kết quả đo được] + [Stack FE cụ thể]<br />
+        Ví dụ: “Refactored explorer search to React Query + debounced typeahead, cutting p95 search UI wait from 800ms to 220ms at 50k DAU.”
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="priority p-high">Ưu tiên cao</span>
+      <h2>2. LinkedIn &amp; portfolio FE</h2>
+      <ul>
+        <li><strong>LinkedIn URL</strong> trên CV — nhiều pipeline auto-skip nếu không có.</li>
+        <li><strong>1 trang portfolio</strong> (Next.js static cũng được): 3 case study ngắn — Seitrace UI, Connect SDK, Kinobi live preview — mỗi case: 1 screenshot, 3 bullet, link demo/GitHub nếu public.</li>
+        <li>Headline LinkedIn trùng hướng apply: <em>Senior Full-Stack · React/Next.js · Real-time &amp; Web3 UX</em> (điều chỉnh theo JD).</li>
+        <li>Pin 2–3 repo hoặc npm package trên GitHub profile (<code>@ancient8/connect</code>, explorer UI nếu open).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="priority p-high">Ưu tiên cao</span>
+      <h2>3. Docksoft — làm rõ hoặc CV sẽ yếu so với Cavies/Ancient8</h2>
+      <p><strong>Vấn đề:</strong> “Consumer apps” không tên, không link → recruiter nghi filler.</p>
+      <p><strong>Cần làm:</strong></p>
+      <ul>
+        <li>Liệt kê <strong>1–2 tên app</strong> + link App Store / web.</li>
+        <li>Ghi rõ <strong>stack FE</strong>: React Native vs Next.js marketing site, state management (Zustand/Redux/Context), payment UI.</li>
+        <li>Giải thích timeline: part-time song song Cavies (đã ghi trên CV) — sẵn sàng giải thích trong phỏng vấn.</li>
+      </ul>
+      <div class="box warn">
+        Nếu app chưa public: mô tả niche + screenshot trong portfolio (private case study) thay vì bullet chung chung.
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="priority p-med">Frontend — chi tiết từng mảng</span>
+      <h2>4. Seitrace (explorer UI)</h2>
+      <p>CV mới đã thêm React/Next.js, search, caching client. <strong>Còn thiếu trên giấy tờ (bạn tự bổ sung số):</strong></p>
+      <ul>
+        <li><strong>Kiến trúc data phía client:</strong> React Query / SWR / custom cache? SSR vs CSR cho trang block/tx?</li>
+        <li><strong>Table &amp; pagination:</strong> virtual scroll (react-window/tanstack virtual) nếu có list lớn.</li>
+        <li><strong>SEO &amp; share:</strong> meta tags cho address/tx pages (quan trọng với explorer).</li>
+        <li><strong>Accessibility:</strong> keyboard search, focus trap trong modal (nếu có).</li>
+      </ul>
+      <div class="box">
+        <strong>Apply role “Frontend”:</strong> đưa bullet Seitrace FE lên <em>đầu</em> CaviesLabs; rút bớt Kafka/ClickHouse xuống 1 bullet.
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="priority p-med">Frontend</span>
+      <h2>5. HeavenDash / brrr (real-time dashboard)</h2>
+      <ul>
+        <li>Ghi rõ thư viện chart (Recharts, ECharts, D3, TradingView lightweight?) — keyword ATS cho “data visualization”.</li>
+        <li>WebSocket reconnect, stale state, loading skeleton — thể hiện mature FE.</li>
+        <li>Nếu có: dark mode, responsive breakpoints cho trader mobile.</li>
+      </ul>
+      <h3>Bullet mẫu (chỉnh số thật):</h3>
+      <div class="box ok">
+        “Built DeFi ranking dashboards in Next.js with WebSocket-driven tables; handled reconnect/backoff and skeleton states so metrics stay consistent during Kafka lag spikes.”
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="priority p-med">Frontend</span>
+      <h2>6. Ancient8 Connect (SDK / design system nhẹ)</h2>
+      <p>Đây là <strong>điểm FE mạnh nhất</strong> trên npm — cần tối đa hóa:</p>
+      <ul>
+        <li>UMD + CSS bundle: cách partner embed (<code>&lt;script&gt;</code> vs npm).</li>
+        <li>Modal/wallet UX: multi-wallet, chain switch, error copy tiếng Anh rõ ràng.</li>
+        <li>Testing: Storybook hoặc demo app? unit test cho hooks?</li>
+        <li> semver, breaking changes, changelog — signal “maintainer”.</li>
+      </ul>
+      <div class="box warn">
+        <strong>Thiếu thường gặp:</strong> không nêu bundle size / tree-shaking → thêm nếu bạn đo được (webpack-bundle-analyzer).
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="priority p-med">Frontend</span>
+      <h2>7. Dojo launchpad (high-stress UX)</h2>
+      <ul>
+        <li>Mint flow: whitelist check → connect wallet → sign → confirm — nêu rõ state machine / disable double-click.</li>
+        <li>Loading &amp; error khi RPC chậm (Solana) — recruiter Web3 rất quan tâm.</li>
+        <li>Partner games (Sipher, CyBall, Blast Royale) — giữ tên, là social proof.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="priority p-med">Frontend</span>
+      <h2>8. Kinobi — document editor &amp; live preview</h2>
+      <p>Story rất tốt cho role product FE. Bổ sung kỹ thuật (nếu đúng với code bạn viết):</p>
+      <ul>
+        <li>Rich text: ProseMirror, Slate, Draft.js, hoặc contenteditable custom?</li>
+        <li>Preview &lt;1s: debounce ms, web worker, iframe sandbox?</li>
+        <li>Export PDF/DOCX phía client hay server?</li>
+      </ul>
+      <div class="box ok">
+        Đây là dự án meta cho CV hiện tại — nên 1 đoạn case study 200 từ + GIF preview trên portfolio.
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="priority p-med">Frontend</span>
+      <h2>9. Green Global &amp; Wideworks (nền tảng FE truyền thống)</h2>
+      <ul>
+        <li>Green Global: form phức tạp (billing), validation schema (Yup/Zod), i18n nếu có.</li>
+        <li>Wideworks: responsive, CMS (WordPress headless?), performance budget.</li>
+        <li>Giúp apply fintech/enterprise VN — đừng chỉ 1 bullet; thêm 1 bullet về a11y hoặc mobile nếu có.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="priority p-med">Ưu tiên trung bình</span>
+      <h2>10. Skills FE — ATS &amp; phỏng vấn</h2>
+      <p>CV đã mở rộng block Frontend. Chỉ thêm vào CV nếu bạn <strong>thật sự dùng trong production</strong>:</p>
+      <table>
+        <thead>
+          <tr><th>Chủ đề</th><th>Từ khóa hữu ích trên JD</th><th>Ghi chú</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>State / data</td><td>React Query, TanStack Query, Redux Toolkit, Zustand</td><td>Chọn 1–2 bạn dùng nhiều nhất</td></tr>
+          <tr><td>Styling</td><td>Tailwind, CSS Modules, styled-components, MUI</td><td>Trùng stack JD target</td></tr>
+          <tr><td>Testing</td><td>Jest, React Testing Library, Playwright, Cypress</td><td>1 dòng + ví dụ project</td></tr>
+          <tr><td>Quality</td><td>ESLint, TypeScript strict, Storybook</td><td>Đặc biệt cho SDK Connect</td></tr>
+          <tr><td>Performance</td><td>Lighthouse, Core Web Vitals, code splitting</td><td>Gắn số Seitrace/marketing site</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <span class="priority p-med">Ưu tiên trung bình</span>
+      <h2>11. Positioning khi apply FE vs Full-stack</h2>
+      <ul>
+        <li><strong>JD Frontend/Product:</strong> tagline nhấn React/Next.js + 2 sản phẩm UI (Seitrace, Connect); summary rút Kafka xuống 1 câu.</li>
+        <li><strong>JD Platform/Backend:</strong> giữ data pipeline; FE 1–2 bullet chứng minh bạn không “chỉ backend”.</li>
+        <li><strong>JD Web3:</strong> Dojo + Connect lên đầu; Seitrace là infra credibility.</li>
+      </ul>
+      <p>Tạo <strong>2 file PDF</strong> từ cùng HTML (hoặc nhờ agent duplicate summary) — đừng gửi 1 bản cho mọi loại job.</p>
+    </div>
+
+    <div class="card">
+      <span class="priority p-low">Dài hạn</span>
+      <h2>12. Vì sao ít phản hồi (ngoài nội dung CV)</h2>
+      <ul>
+        <li>Thị trường Web3 co — cần song song apply SaaS/fintech/product VN-SG remote.</li>
+        <li>Cold apply volume cao — referral + LinkedIn message ngắn hiệu quả hơn.</li>
+        <li>Mỗi JD: chèn 5 từ khóa từ posting vào summary + skill (không spam).</li>
+        <li>Cover letter 5 câu: 1 sản phẩm FE liên quan + 1 metric + lý do company.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>13. Việc cần làm ngay (checklist)</h2>
+      <ul>
+        <li>☐ Điền bảng metric mục 1 (ít nhất Seitrace + Connect + Kinobi)</li>
+        <li>☐ Thêm LinkedIn URL vào CV</li>
+        <li>☐ Docksoft: tên app + link</li>
+        <li>☐ Portfolio 3 case study FE</li>
+        <li>☐ Xuất PDF từ <a href="index.html">CV mới</a> — kiểm tra 2 trang, font đọc được trên mobile</li>
+        <li>☐ Tạo biến thể summary cho track Frontend</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

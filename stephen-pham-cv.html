@@ -40,9 +40,9 @@
       max-width: 420px;
     }
 
-    .toolbar-actions { display: flex; gap: 8px; }
+    .toolbar-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
-    button {
+    button, .toolbar a.btn-link {
       font: inherit;
       font-size: 0.9rem;
       font-weight: 600;
@@ -52,15 +52,17 @@
       cursor: pointer;
       background: var(--accent);
       color: #fff;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    button.secondary {
+    button.secondary, .toolbar a.btn-link.secondary {
       background: #fff;
       color: var(--accent);
       border: 1px solid var(--accent);
     }
 
-    button:hover { filter: brightness(1.05); }
+    button:hover, .toolbar a.btn-link:hover { filter: brightness(1.05); }
 
     .page {
       max-width: 820px;
@@ -134,13 +136,8 @@
     .job-meta { font-size: 0.88rem; color: var(--muted); text-align: right; }
     .job-org { font-size: 0.92rem; color: var(--muted); margin-bottom: 6px; }
 
-    ul {
-      padding-left: 1.15rem;
-      margin: 0;
-    }
-
+    ul { padding-left: 1.15rem; margin: 0; }
     li { margin-bottom: 4px; }
-
     li strong { font-weight: 600; }
 
     .subhead {
@@ -148,6 +145,20 @@
       font-size: 0.92rem;
       margin: 8px 0 4px;
       color: var(--ink);
+    }
+
+    .fe-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #0a6b4a;
+      background: #e8f5ef;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
     }
 
     .awards-edu {
@@ -165,29 +176,26 @@
     @media print {
       body { background: #fff; padding: 0; }
       .toolbar { display: none !important; }
-      .page {
-        box-shadow: none;
-        max-width: none;
-        padding: 0;
-      }
-      @page { size: A4; margin: 14mm 16mm; }
+      .page { box-shadow: none; max-width: none; padding: 0; }
+      .fe-tag { background: #eee; color: #333; }
+      @page { size: A4; margin: 12mm 14mm; }
       a { color: var(--ink); text-decoration: none; }
     }
   </style>
 </head>
 <body>
   <div class="toolbar">
-    <p>Mở trang này trong Chrome/Edge → <strong>Save as PDF</strong> để tải CV. Hoặc dùng nút bên phải (hộp thoại in → “Save as PDF”).</p>
+    <p><strong>Save to PDF:</strong> nút bên phải → “Save as PDF”. Xem checklist cải thiện (tiếng Việt) trước khi gửi CV.</p>
     <div class="toolbar-actions">
+      <a class="btn-link secondary" href="huong-dan-cai-thien.html">Hướng dẫn cải thiện</a>
       <button type="button" onclick="window.print()">Save to PDF</button>
-      <button type="button" class="secondary" onclick="window.print()">In / Print</button>
     </div>
   </div>
 
   <article class="page" id="resume">
     <header>
       <h1>Stephen Pham</h1>
-      <p class="tagline">Senior Full-Stack Engineer · Data platforms &amp; high-traffic APIs</p>
+      <p class="tagline">Senior Full-Stack Engineer · React/Next.js · Data-heavy UIs &amp; real-time dashboards</p>
       <p class="contact">
         <a href="mailto:tphamdn@gmail.com">tphamdn@gmail.com</a> ·
         +84 905 631 878 ·
@@ -199,10 +207,12 @@
     <section>
       <h2>Summary</h2>
       <p class="summary">
-        Senior full-stack engineer with 6+ years building production systems end to end: block explorers and public data APIs,
-        event-driven analytics (Kafka, Debezium, ClickHouse), and wallet/identity SDKs used across Web3 products.
-        Strong in TypeScript/Node.js, React/Next.js, PostgreSQL performance, and turning ambiguous product goals into
-        reliable architecture. Founding engineer experience; comfortable owning zero-to-one delivery and mentoring teams.
+        Senior full-stack engineer (6+ years) shipping TypeScript products from UI to infrastructure: block explorer
+        interfaces with sub-second search, DeFi analytics dashboards fed by WebSockets, and published React wallet SDKs
+        (<code>@ancient8/connect</code>) adopted across launchpads and games. Deep backend/data work (Node.js, PostgreSQL,
+        Kafka, ClickHouse) paired with strong client-side delivery in React, Next.js, and React Native—wallet flows,
+        high-traffic mint UX, and document editors with live preview. Founding-engineer background; owns zero-to-one
+        product and developer experience.
       </p>
     </section>
 
@@ -211,18 +221,22 @@
       <dl class="skills-grid">
         <dt>Languages</dt>
         <dd>TypeScript, JavaScript, Python, Go</dd>
+        <dt>Frontend</dt>
+        <dd>
+          React, Next.js, Vue.js, React Native · HTML/CSS · responsive layouts · component-driven UI ·
+          client state &amp; data fetching · WebSocket/streaming updates · wallet/modal UX (multi-chain) ·
+          performance-minded lists &amp; search (virtualization-friendly patterns)
+        </dd>
         <dt>Backend</dt>
         <dd>Node.js, NestJS, Fastify, Express, REST, WebSockets, OpenAPI, Prisma, TypeORM</dd>
-        <dt>Frontend</dt>
-        <dd>React, Next.js, Vue.js, React Native</dd>
         <dt>Data</dt>
-        <dd>PostgreSQL (schema design, indexing, query tuning), ClickHouse, Redis, Supabase</dd>
+        <dd>PostgreSQL (schema, indexing, query tuning), ClickHouse, Redis, Supabase</dd>
         <dt>Streaming</dt>
         <dd>Kafka / Redpanda, Debezium CDC, materialized views, pre-aggregation</dd>
         <dt>Web3</dt>
-        <dd>Solana, Sei, multi-chain wallets (Solana Wallet Adapter, ethers, web3.js)</dd>
+        <dd>Solana, Sei, Solana Wallet Adapter, ethers, web3.js, multi-chain auth</dd>
         <dt>Platform</dt>
-        <dd>Docker, Kubernetes, GitHub Actions, AWS/GCP, automated testing, on-call &amp; incident response</dd>
+        <dd>Docker, Kubernetes, GitHub Actions, AWS/GCP, automated testing, code review, on-call</dd>
       </dl>
     </section>
 
@@ -234,9 +248,10 @@
           <span class="job-title">Independent Consultant · Software Engineer</span>
           <span class="job-meta">Mar 2026 – Sep 2026</span>
         </div>
-        <p class="job-org">Docksoft · Da Nang · Solo product studio (part-time alongside full-time role until May 2026)</p>
+        <p class="job-org">Docksoft · Da Nang · Solo product studio (part-time alongside CaviesLabs until May 2026)</p>
         <ul>
-          <li>Owned full lifecycle for consumer mobile/web apps: product design, backend, App Store release, subscriptions, and marketing sites.</li>
+          <li>End-to-end consumer apps: product/UI design, React Native or web frontends, backend APIs, App Store release, subscriptions (StoreKit), and marketing sites (Next.js).</li>
+          <li>Built landing flows and in-app purchase screens; aligned frontend state with subscription webhooks and entitlement checks.</li>
         </ul>
       </div>
 
@@ -247,23 +262,24 @@
         </div>
         <p class="job-org">CaviesLabs · Melbourne, Australia · Remote</p>
 
-        <p class="subhead">Seitrace — block explorer &amp; public data API (Sei Network)</p>
+        <p class="subhead">Seitrace — block explorer &amp; public data API (Sei Network) <span class="fe-tag">Frontend</span></p>
         <ul>
-          <li>Designed and shipped ingestion, PostgreSQL storage, and REST API powering the primary Sei block explorer.</li>
-          <li>Built indexers aligned with high-frequency block production; tuned schema and indexes for <strong>sub-second</strong> lookups on blocks, transactions, and addresses under high read volume.</li>
-          <li>Led pivot from dev tooling to ecosystem infrastructure: translated business goals into roadmaps and system design.</li>
+          <li>Shipped the explorer UI on React/Next.js: global search, address/tx/block detail views, and activity tables tuned for high read volume and fast perceived load.</li>
+          <li>Designed client data layer (REST + caching) so block, transaction, and address lookups feel <strong>sub-second</strong> under heavy traffic; coordinated with indexer/API pagination and index strategy.</li>
+          <li>Owned backend ingestion, PostgreSQL storage, and public REST API powering the primary Sei block explorer.</li>
         </ul>
 
-        <p class="subhead">Analytics &amp; DeFi — HeavenDash, brrr</p>
+        <p class="subhead">Analytics &amp; DeFi — HeavenDash, brrr <span class="fe-tag">Frontend</span></p>
         <ul>
-          <li>Streamed PostgreSQL changes via Debezium and Kafka into ClickHouse; used MergeTree tables and materialized views to pre-aggregate token rankings, fees, and liquidity.</li>
-          <li>Exposed aggregates through NestJS/Fastify APIs (OpenAPI) and WebSocket feeds; Redis caching for hot paths.</li>
+          <li>Built real-time ranking and liquidity dashboards consuming NestJS/Fastify APIs and WebSocket feeds; charts and tables update from streaming aggregates (ClickHouse-backed).</li>
+          <li>Implemented CDC pipeline (Debezium → Kafka → ClickHouse) with MergeTree tables and materialized views for token rankings, fees, and liquidity metrics.</li>
+          <li>Redis-backed caching on hot API paths; OpenAPI-documented services for partner integrations.</li>
         </ul>
 
         <p class="subhead">Hamsterbox — Web3 gaming infrastructure</p>
         <ul>
-          <li>Backend for cross-chain P2P swaps (HamsterSwap) and automated DCA (HamsterPocket): idempotent order execution and balance tracking.</li>
-          <li>Led Hamsterbox Kit SDK from first release to developer adoption; product assets later acquired by an investment fund.</li>
+          <li><strong>Hamsterbox Kit</strong> — React/TS SDK surfaces for game studios: strictly typed public API, drop-in multi-chain wallet auth, and integration docs; grew from first release to developer adoption (assets later acquired).</li>
+          <li>Backend for HamsterSwap (cross-chain P2P collectibles) and HamsterPocket (automated DCA): idempotent orders and balance tracking.</li>
         </ul>
       </div>
 
@@ -274,9 +290,9 @@
         </div>
         <p class="job-org">Ancient8 · Ho Chi Minh City · Remote · Web3 gaming guild (Dragonfly, Pantera, Hashed)</p>
         <ul>
-          <li>First engineer post–$4M seed; helped hire core team, CI/CD, Docker services, repo standards, and engineering process through subsequent $6M raise.</li>
-          <li><strong>Ancient8 Connect</strong> — Published <code>@ancient8/connect</code> npm package: standard wallet/identity layer (Solana + EVM), modal flows, typed auth callbacks, drop-in CSS for partner games and launchpads.</li>
-          <li><strong>Ancient8 Dojo</strong> — Led full-stack Solana GameFi launchpad (IGO): three sale modes, allocation &amp; anti-duplication under high mint load; integrated Ancient8 Connect for wallet/UID.</li>
+          <li>First engineer post–$4M seed; helped hire core team, CI/CD, Docker services, and engineering standards through $6M follow-on.</li>
+          <li><strong>Ancient8 Connect</strong> <span class="fe-tag">Frontend</span> — Shipped <code>@ancient8/connect</code> as a TypeScript/React UMD library: connect/sign-in, link wallets, recovery after lost wallet (Solana + EVM). Modal-driven flows, typed auth/connection callbacks, bundled CSS for drop-in partner integration; maintained on npm for Dojo and third-party games.</li>
+          <li><strong>Ancient8 Dojo</strong> <span class="fe-tag">Frontend</span> — Full-stack Solana GameFi launchpad (Sipher, CyBall, Blast Royale): React mint UI for whitelist/public sale modes, wallet + UID via Connect, optimistic UX and error states under high concurrent mint load; sale backend with allocation limits and duplicate-request protection.</li>
         </ul>
       </div>
 
@@ -287,8 +303,8 @@
         </div>
         <p class="job-org">Kyros Ventures · Ho Chi Minh City · Remote</p>
         <ul>
-          <li>Owned uptime, security, and maintenance across portfolio web apps; optimized slow SQL, fixed critical defects, reduced legacy debt.</li>
-          <li>Introduced code review, monitoring standards, and incident response across active products.</li>
+          <li>Maintained portfolio web apps (React/Vue-era codebases): critical bug fixes, frontend regressions, and SQL/query optimizations affecting page load.</li>
+          <li>Introduced code review, monitoring, and incident response across active products.</li>
         </ul>
       </div>
 
@@ -299,7 +315,9 @@
         </div>
         <p class="job-org">Green Global · Da Nang · EVNCPC Customer Care Portal (cskh.cpc.vn)</p>
         <ul>
-          <li>Built TypeScript UI and REST integrations for 4.8M+ electricity customers: billing, usage, outages, and service requests.</li>
+          <li>Developed TypeScript customer-facing modules for 4.8M+ users: bill &amp; usage lookup, outage schedules, and online service requests with form validation and accessible error messaging.</li>
+          <li>Integrated REST APIs; structured reusable form/table components and loading states for slow mobile networks common in utility customers.</li>
+          <li>Collaborated with backend on API contracts and pagination for large billing histories.</li>
         </ul>
       </div>
 
@@ -310,7 +328,8 @@
         </div>
         <p class="job-org">Kinobi · Singapore · Remote</p>
         <ul>
-          <li>Shipped Resume Builder and Cover Letter Builder with live preview (&lt;1s updates), used by thousands of job seekers.</li>
+          <li>Built Resume Builder and Cover Letter Builder end to end (React): rich editing, template switching, and <strong>live preview updating in under one second</strong> for thousands of job seekers.</li>
+          <li>Optimized preview pipeline (debounced sync, minimal DOM diffing) so typing felt instant without sacrificing PDF/export fidelity.</li>
         </ul>
       </div>
 
@@ -321,7 +340,7 @@
         </div>
         <p class="job-org">Wideworks · Los Gatos, CA · Remote</p>
         <ul>
-          <li>Delivered client full-stack sites and API integrations under tight launch deadlines.</li>
+          <li>Delivered client marketing sites and admin UIs (React/Vue) with REST integrations under tight launch deadlines.</li>
         </ul>
       </div>
     </section>
